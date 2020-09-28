@@ -1,7 +1,7 @@
 <template>
   <div>
     <search-panel @valuein="checkinput" @showAll="showall"></search-panel>
-
+    <div class="gap"></div>
     <results v-if="hasInput"></results>
     <all v-if="showAllTag"></all>
   </div>
@@ -43,4 +43,9 @@ export default {
 </script>
 
 <style scoped>
+.gap {
+  width: 100%;
+  height: 0;
+  box-shadow: 0px 10px 0px 0px #888888;
+}
 </style>

@@ -1,9 +1,12 @@
 <template>
-  <div class="dropdown" style="float: right">
-    <button class="dropbtn">下载</button>
+  <div class="dropdown">
+    <img src="@/assets/images/download.png" alt="">
+    <div>
+    <span class="dropbtn">下载</span>
     <div class="dropdown-content">
       <a href="#" @click="exportPartExcel">导出当前结果</a>
       <a href="#" @click="exportFullExcel">导出完整字典</a>
+    </div>
     </div>
   </div>
 </template>
@@ -104,22 +107,26 @@ export default {
 
 <style scoped>
 .dropbtn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
   cursor: pointer;
 }
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.dropdown img {
+  cursor: pointer;
+  height: 1rem;
 }
 .dropdown-content {
   display: none;
   position: absolute;
   right: 0;
+  bottom: 1.2rem;
   background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 140px;
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
 }
 .dropdown-content a {
   color: black;
@@ -129,6 +136,7 @@ export default {
 }
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  color: #2c8dda;
 }
 
 .dropdown:hover .dropdown-content {
@@ -136,6 +144,6 @@ export default {
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  color: #2c8dda;
 }
 </style>

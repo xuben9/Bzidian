@@ -1,10 +1,11 @@
 <template>
   <div class="result">
     <div class="resNav">
-      <h2>查询结果</h2>
+      <div class="imgFontPosition">
+      <img src="@/assets/images/results.png" alt=""><span>查询结果 - {{ this.$store.state.keyWords }}</span>
+      </div>
       <droplist></droplist>
     </div>
-    <hr />
     <item></item>
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
 
 <style scoped>
 .result {
-  margin: 5% 20%;
+  margin: 1rem 5%;
 }
 .result h2 {
   display: inline-block;
@@ -35,7 +36,16 @@ export default {
 }
 .resNav {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.imgFontPosition {
+  display: flex;
+  align-items: center;
+}
+.imgFontPosition img {
+  height: 1rem;
+  margin-right: 0.3rem;
 }
 </style>

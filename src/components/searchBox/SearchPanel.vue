@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <h1 class="iconfont icon-zidian font">标准量测字典</h1>
+    <span class="font">标准量测字典</span>
     <div class="in-layout">
       <input
         class="input"
@@ -9,15 +9,18 @@
         v-model="keyWords"
         @keyup.enter="pushInput"
       />
-      <span>
-        <input
+        <!-- <input
           type="submit"
           value="搜索"
           id="se"
           class="search"
           @click="pushInput"
-        />
-      </span>
+        /> -->
+        <img 
+        src="@/assets/images/search.png" 
+        class="search" 
+        @click="pushInput" 
+        alt="">
     </div>
     <button class="btn" @click="showAll">查看所有</button>
   </div>
@@ -40,7 +43,7 @@ export default {
       ) {
         this.$emit("valuein");
         this.$store.commit("getKeyWords", this.keyWords);
-        // this.$store.commit('showResults',this.keyWords)
+        this.$store.commit('showResults',this.keyWords)
 
         this.$axios
           .post("/queryDictionaryInfo/" + that.keyWords)
@@ -71,14 +74,10 @@ export default {
 
 <style scoped>
 .nav {
-  text-align: center;
-}
-.font {
-  font-size: 2em;
-  cursor: pointer;
-}
-.font:hover {
-  color: #3e8e41;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1rem 5%;
 }
 .in-layout {
   display: flex;
@@ -90,33 +89,36 @@ export default {
 }
 .input {
   box-sizing: border-box;
-  height: 2rem;
-  width: 40%;
+  height: 1.5rem;
+  width: 60%;
   box-shadow: none;
-  border-radius: 10px 0 0 10px;
+  padding: 2px 2px;
+  border-radius: 5px 0 0 5px;
   border: 2px solid #c4c7ce;
 }
 .input:focus {
-  border-color: #4caf50;
+  border-color: #2c8dda;
 }
 .search {
   box-sizing: border-box;
-  height: 2rem;
-  padding: 1px 2px;
+  height: 1.5rem;
+  padding: 5px 5px;
   box-shadow: none;
-  border-radius: 0 10px 10px 0;
-  border: 2px solid #c4c7ce;
-  background-color: #4caf50;
+  border-radius: 0 5px 5px 0;
+  background-color:#2c8dda;
   border: none;
   cursor: pointer;
 }
 .search:hover {
-  background-color: #3e8e41;
+  background-color:#1e81d1;
 }
 .btn {
   cursor: pointer;
+  color: white;
+  background-color: #3cbd84;
+  border: none;
 }
 .btn:hover {
-  background-color: #3e8e41;
+  background-color:#32b67b;
 }
 </style>

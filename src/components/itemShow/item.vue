@@ -1,7 +1,5 @@
 <template>
   <div class="item">
-    <h2>{{ this.$store.state.keyWords }}</h2>
-
     <!-- <ul>
             <li v-for="(item,index) in this.$store.state.res" :key="index">{{index + 1}}{{item}}</li>
             <h2 style="display: inline-block">数据库查询结果</h2>
@@ -12,24 +10,27 @@
       border
       style="width: 100%"
     >
-      <el-table-column type="index" :index="indexMethod" width="50">
+      <el-table-column align="center" type="index" label="序号" :index="indexMethod" width="50">
       </el-table-column>
-      <el-table-column prop="CODE" label="编码" width="180"> </el-table-column>
-      <el-table-column prop="MEA_NAME" label="标准字典" width="180">
+      <el-table-column align="center" prop="CODE" label="编码" min-width="120"> </el-table-column>
+      <el-table-column align="center" prop="MEA_NAME" label="标准字典" min-width="180">
       </el-table-column>
-      <el-table-column prop="NOTE" label="中文对照"> </el-table-column>
+      <el-table-column align="center" prop="NOTE" label="中文对照" min-width="180"> </el-table-column>
     </el-table>
 
+    <div class="pagePosition">
+    <div>每页显示
+    <input type="number" min="1" max="12" value="10" @change="changePageSize()">条
+    </div>
     <el-pagination
       background
       :current-page.sync="currentPage"
       :page-size="pageSize"
-      hide-on-single-page:
-      true
       layout="prev, pager, next"
       :total="this.$store.state.res.length"
     >
     </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -53,9 +54,17 @@ export default {
     indexMethod(index) {
       return index + this.pageSize * (this.currentPage - 1) + 1;
     },
+    changePageSize() {
+      this.pageSize = event.target.value;
+    }
   },
 };
 </script>
 
 <style scoped>
+.pagePosition {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 </style>
