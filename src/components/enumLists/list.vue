@@ -130,7 +130,8 @@ export default {
 }
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 2px;
+  text-align: center;
   text-decoration: none;
   display: block;
 }

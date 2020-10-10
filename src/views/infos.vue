@@ -3,6 +3,9 @@
     <div class="resNav">
       <div class="imgFontPosition">
       <img src="@/assets/images/results.png" alt=""><span>查询结果 - {{ this.$store.state.keyWords }}</span>
+      <span>
+          共{{this.$store.state.res.length}}条记录
+      </span>
       </div>
       <droplist></droplist>
     </div>
@@ -47,5 +50,8 @@ export default {
 .imgFontPosition img {
   height: 1rem;
   margin-right: 0.3rem;
+}
+.imgFontPosition span {
+  margin-right: 2rem;
 }
 </style>

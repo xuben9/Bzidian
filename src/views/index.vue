@@ -1,14 +1,13 @@
 <template>
   <div>
     <search-panel @valuein="checkinput" @showAll="showall"></search-panel>
-    <div class="gap"></div>
+    <hr>
     <results v-if="hasInput"></results>
     <all v-if="showAllTag"></all>
   </div>
 </template>
 
 <script>
-import "@/assets/icons/icon_dictionary/iconfont.css";
 import searchPanel from "@/components/searchBox/SearchPanel";
 import item from "@/components/itemShow/item";
 import droplist from "@/components/enumLists/list";
@@ -20,7 +19,7 @@ export default {
   data() {
     return {
       hasInput: false,
-      showAllTag: false,
+      showAllTag: true,
       keyWordsIn: "",
     };
   },
@@ -41,11 +40,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.gap {
-  width: 100%;
-  height: 0;
-  box-shadow: 0px 10px 0px 0px #888888;
-}
-</style>

@@ -3,6 +3,9 @@
     <div class="resNav">
       <div class="imgFontPosition">
       <img src="@/assets/images/results.png" alt=""><span>查询结果 - 所有字典</span>
+      <span>
+          共{{this.$store.state.dictionary.length}}条记录
+      </span>
       </div>
       <droplist></droplist>
     </div>
@@ -22,6 +25,7 @@
       </el-table>
 
       <div class="pagePosition">
+        
       <div>每页显示
       <input type="number" min="1" max="12" value="10" @change="changePageSize()">条
       </div>
@@ -61,6 +65,9 @@ export default {
     indexMethod(index) {
       return index + this.pageSize * (this.currentPage - 1) + 1;
     },
+    changePageSize() {
+      this.pageSize = event.target.value * 1;
+    }
   },
   components: {
     droplist,
@@ -86,12 +93,19 @@ export default {
   height: 1rem;
   margin-right: 0.3rem;
 }
+.imgFontPosition span {
+  margin-right: 2rem;
+}
 .pagePosition {
+  margin-top: 1rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.el-table_1_column_1 {
-  background-color: #4e4e4e;
+.pagePosition div {
+  display: flex;
+}
+.pagePosition input {
+  width: 2rem;
 }
 </style>

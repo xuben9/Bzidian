@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "http://179.10.8.14:10099/iot_measurement_dictionaryTool/dictionaryTool" : '/api'
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 Vue.config.productionTip = false
 

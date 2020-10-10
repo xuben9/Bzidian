@@ -9,13 +9,6 @@
         v-model="keyWords"
         @keyup.enter="pushInput"
       />
-        <!-- <input
-          type="submit"
-          value="搜索"
-          id="se"
-          class="search"
-          @click="pushInput"
-        /> -->
         <img 
         src="@/assets/images/search.png" 
         class="search" 
@@ -27,6 +20,8 @@
 </template>
 
 <script>
+import utils from "@/js/utils.js";
+
 export default {
   name: "searchPanel",
   data() {
@@ -35,7 +30,7 @@ export default {
     };
   },
   methods: {
-    pushInput() {
+    pushInput: utils.debounce(function() {
       const that = this;
       if (
         this.keyWords != null &&
@@ -43,7 +38,7 @@ export default {
       ) {
         this.$emit("valuein");
         this.$store.commit("getKeyWords", this.keyWords);
-        this.$store.commit('showResults',this.keyWords)
+        // this.$store.commit('showResults',this.keyWords)
 
         this.$axios
           .post("/queryDictionaryInfo/" + that.keyWords)
@@ -55,8 +50,8 @@ export default {
             console.log(err);
           });
       }
-    },
-    showAll() {
+    }),
+    showAll: utils.debounce(function() {
       this.$emit("showAll");
       this.$axios
         .get("/queryDictionaryInfo/null")
@@ -67,8 +62,11 @@ export default {
           console.log("failed");
           console.log(err);
         });
-    },
+    }),
   },
+  mounted() {
+    this.showAll();
+  }
 };
 </script>
 
@@ -86,6 +84,7 @@ export default {
 }
 .in-layout input {
   outline: none;
+  border-right: none;
 }
 .input {
   box-sizing: border-box;

@@ -55,7 +55,7 @@ export default {
       return index + this.pageSize * (this.currentPage - 1) + 1;
     },
     changePageSize() {
-      this.pageSize = event.target.value;
+      this.pageSize = event.target.value * 1;
     }
   },
 };
@@ -66,5 +66,9 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 1rem;
+}
+.pagePosition input {
+  width: 2rem;
 }
 </style>
